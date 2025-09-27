@@ -179,7 +179,7 @@ if __name__ == "__main__":
     HIDDEN_SIZE = 5
     OUTPUT_SIZE = 1
     COMMUNICATION_ROUNDS = 5
-    LOCAL_EPOCHS = 10
+    LOCAL_EPOCHS = 200
 
     # 1. Initialize the global model and the server
     global_nn = SimpleNN(INPUT_SIZE, HIDDEN_SIZE, OUTPUT_SIZE)
@@ -223,4 +223,6 @@ if __name__ == "__main__":
     
     print("Final Global Model Predictions (XOR Problem):")
     for i, data in enumerate(test_data):
-        print(f"Input: {data}, Prediction: {predictions[i][0]:.4f}")
+        # Round the raw sigmoid output (which is between 0 and 1) to a final class
+        final_answer = 1 if predictions[i][0] > 0.5 else 0
+        print(f"xor({data[0]}, {data[1]}) = {final_answer} (Raw Prediction: {predictions[i][0]:.4f})")
