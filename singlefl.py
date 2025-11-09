@@ -226,3 +226,6 @@ if __name__ == "__main__":
         # Round the raw sigmoid output (which is between 0 and 1) to a final class
         final_answer = 1 if predictions[i][0] > 0.5 else 0
         print(f"xor({data[0]}, {data[1]}) = {final_answer} (Raw Prediction: {predictions[i][0]:.4f})")
+
+
+        # how to defend against malicious training through data? the data is private?
