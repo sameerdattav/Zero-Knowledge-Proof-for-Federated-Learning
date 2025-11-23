@@ -1,0 +1,9 @@
+fl.py: Implements the PyTorch simulation of the federated learning process (used as the reference implementation).
+
+export_onnx.py: Exports the "editable" PyTorch model blueprint (forward pass only) in ONNX format, preserving training parameters.
+
+generate_training_artifacts.py: Uses onnxruntime-training to auto-generate the full backward pass, loss, and optimizer graphs from the blueprint.
+
+ground_truth.py: Runs a single, verified SGD step in PyTorch and saves the exact inputs, weights, and gradients to a file for validation.
+
+fixer.py: Patches the auto-generated graph to fix the "boolean output" bug and then verifies that the patched graph's math matches the ground truth exactly.
