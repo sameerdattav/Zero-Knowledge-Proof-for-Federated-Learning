@@ -1,0 +1,644 @@
+ojas@Ojass-Laptop zk-torch % brew uninstall rust
+
+Uninstalling /opt/homebrew/Cellar/rust/1.92.0... (4,613 files, 367.9MB)
+==> Autoremoving 5 unneeded formulae:
+libgit2
+libssh2
+llvm
+python@3.14
+z3
+Uninstalling /opt/homebrew/Cellar/llvm/21.1.8... (9,286 files, 1.8GB)
+Uninstalling /opt/homebrew/Cellar/libgit2/1.9.2... (109 files, 5.2MB)
+Uninstalling /opt/homebrew/Cellar/z3/4.15.4... (120 files, 33.6MB)
+Uninstalling /opt/homebrew/Cellar/python@3.14/3.14.2... (3,772 files, 73.2MB)
+Uninstalling /opt/homebrew/Cellar/libssh2/1.11.1... (201 files, 1.3MB)
+ojas@Ojass-Laptop zk-torch % curl https://sh.rustup.rs -sSf | sh
+
+info: downloading installer
+warn: It looks like you have an existing rustup settings file at:
+warn: /Users/ojas/.rustup/settings.toml
+warn: Rustup will install the default toolchain as specified in the settings file,
+warn: instead of the one inferred from the default host triple.
+
+Welcome to Rust!
+
+This will download and install the official compiler for the Rust
+programming language, and its package manager, Cargo.
+
+Rustup metadata and toolchains will be installed into the Rustup
+home directory, located at:
+
+  /Users/ojas/.rustup
+
+This can be modified with the RUSTUP_HOME environment variable.
+
+The Cargo home directory is located at:
+
+  /Users/ojas/.cargo
+
+This can be modified with the CARGO_HOME environment variable.
+
+The cargo, rustc, rustup and other commands will be added to
+Cargo's bin directory, located at:
+
+  /Users/ojas/.cargo/bin
+
+This path will then be added to your PATH environment variable by
+modifying the profile files located at:
+
+  /Users/ojas/.profile
+  /Users/ojas/.zshenv
+
+You can uninstall at any time with rustup self uninstall and
+these changes will be reverted.
+
+Current installation options:
+
+
+   default host triple: aarch64-apple-darwin
+     default toolchain: stable (default)
+               profile: default
+  modify PATH variable: yes
+
+1) Proceed with standard installation (default - just press enter)
+2) Customize installation
+3) Cancel installation
+>
+
+info: profile set to 'default'
+info: default host triple is aarch64-apple-darwin
+warn: Updating existing toolchain, profile choice will be ignored
+info: syncing channel updates for 'stable-aarch64-apple-darwin'
+info: default toolchain set to 'stable-aarch64-apple-darwin'
+
+  stable-aarch64-apple-darwin unchanged - rustc 1.92.0 (ded5c06cf 2025-12-08)
+
+
+Rust is installed now. Great!
+
+To get started you may need to restart your current shell.
+This would reload your PATH environment variable to include
+Cargo's bin directory ($HOME/.cargo/bin).
+
+To configure your current shell, you need to source
+the corresponding env file under $HOME/.cargo.
+
+This is usually done by running one of the following (note the leading DOT):
+. "$HOME/.cargo/env"            # For sh/bash/zsh/ash/dash/pdksh
+source "$HOME/.cargo/env.fish"  # For fish
+source $"($nu.home-path)/.cargo/env.nu"  # For nushell
+ojas@Ojass-Laptop zk-torch % source $HOME/.cargo/env
+
+ojas@Ojass-Laptop zk-torch % rustup toolchain install nightly
+
+info: syncing channel updates for 'nightly-aarch64-apple-darwin'
+
+  nightly-aarch64-apple-darwin unchanged - rustc 1.94.0-nightly (fecb335cb 2026-01-07)
+
+info: checking for self-update
+ojas@Ojass-Laptop zk-torch % rustc +nightly --version
+cargo +nightly --version
+
+rustc 1.94.0-nightly (fecb335cb 2026-01-07)
+cargo 1.94.0-nightly (b54051b15 2025-12-30)
+ojas@Ojass-Laptop zk-torch % cargo +nightly run --release --bin zk_torch --features fold -- config.yaml
+
+   Compiling proc-macro2 v1.0.105
+   Compiling quote v1.0.43
+   Compiling unicode-ident v1.0.22
+   Compiling autocfg v1.5.0
+   Compiling libm v0.2.15
+   Compiling libc v0.2.179
+   Compiling zerocopy v0.8.33
+   Compiling cfg-if v1.0.4
+   Compiling crunchy v0.2.4
+   Compiling version_check v0.9.5
+   Compiling crossbeam-utils v0.8.21
+   Compiling num-traits v0.2.19
+   Compiling either v1.15.0
+   Compiling syn v1.0.109
+   Compiling rayon-core v1.13.0
+   Compiling crossbeam-epoch v0.9.18
+   Compiling crossbeam-deque v0.8.6
+   Compiling syn v2.0.114
+   Compiling tiny-keccak v2.0.2
+   Compiling num-integer v0.1.46
+   Compiling memchr v2.7.6
+   Compiling getrandom v0.2.16
+   Compiling serde_core v1.0.228
+   Compiling rand_core v0.6.4
+   Compiling zerocopy-derive v0.8.33
+   Compiling serde_derive v1.0.228
+   Compiling rayon v1.11.0
+   Compiling once_cell v1.21.3
+   Compiling ahash v0.8.12
+   Compiling serde v1.0.228
+   Compiling const-random-macro v0.1.16
+   Compiling const-random v0.1.18
+   Compiling anyhow v1.0.100
+   Compiling ucd-trie v0.1.7
+   Compiling pest v2.8.5
+   Compiling pest_meta v2.8.5
+   Compiling aho-corasick v1.1.4
+   Compiling num-conv v0.1.0
+   Compiling time-core v0.1.6
+   Compiling powerfmt v0.2.0
+   Compiling regex-syntax v0.8.8
+   Compiling deranged v0.5.5
+   Compiling ppv-lite86 v0.2.21
+   Compiling rand_chacha v0.3.1
+   Compiling rand v0.8.5
+   Compiling time-macros v0.2.24
+   Compiling num-complex v0.4.6
+   Compiling regex-automata v0.4.13
+   Compiling pest_generator v2.8.5
+   Compiling paste v1.0.15
+   Compiling itoa v1.0.17
+   Compiling typenum v1.19.0
+   Compiling static_assertions v1.1.0
+   Compiling time v0.3.44
+   Compiling pest_derive v2.8.5
+   Compiling regex v1.12.2
+   Compiling itertools v0.14.0
+   Compiling liquid-derive v0.26.10
+   Compiling kstring v2.0.2
+   Compiling generic-array v0.14.7
+   Compiling anymap2 v0.13.0
+   Compiling matrixmultiply v0.3.10
+   Compiling percent-encoding v2.3.2
+   Compiling unicode-segmentation v1.12.0
+   Compiling tinyvec_macros v0.1.1
+   Compiling byteorder v1.5.0
+   Compiling tinyvec v1.10.0
+   Compiling liquid-core v0.26.11
+   Compiling hashbrown v0.14.5
+   Compiling num-bigint v0.4.6
+   Compiling shlex v1.3.0
+   Compiling same-file v1.0.6
+   Compiling find-msvc-tools v0.1.6
+   Compiling rawpointer v0.2.1
+   Compiling cc v1.2.51
+   Compiling walkdir v2.5.0
+   Compiling half v2.7.1
+   Compiling unicode-normalization v0.1.25
+   Compiling log v0.4.29
+   Compiling smallvec v1.15.1
+   Compiling minimal-lexical v0.2.1
+   Compiling scan_fmt v0.2.6
+   Compiling nom v7.1.3
+   Compiling ndarray v0.15.6
+   Compiling crypto-common v0.1.7
+   Compiling block-buffer v0.10.4
+   Compiling string-interner v0.15.0
+   Compiling itertools v0.12.1
+   Compiling rustix v1.1.3
+   Compiling dyn-hash v0.2.2
+   Compiling downcast-rs v1.2.1
+   Compiling dyn-clone v1.0.20
+   Compiling strength_reduce v0.2.4
+   Compiling maplit v1.0.2
+   Compiling lazy_static v1.5.0
+   Compiling transpose v0.2.3
+   Compiling digest v0.10.7
+   Compiling liquid-lib v0.26.11
+   Compiling derive-new v0.5.9
+   Compiling errno v0.3.14
+   Compiling primal-check v0.3.4
+   Compiling bitflags v2.10.0
+   Compiling bit-vec v0.6.3
+   Compiling crc32fast v1.5.0
+   Compiling bit-set v0.5.3
+   Compiling rustfft v6.4.1
+   Compiling ark-std v0.4.0
+   Compiling ark-serialize-derive v0.4.2
+   Compiling liquid v0.26.11
+   Compiling zeroize_derive v1.4.3
+   Compiling adler2 v2.0.1
+   Compiling simd-adler32 v0.3.8
+   Compiling zeroize v1.8.2
+   Compiling ark-ff-macros v0.4.2
+   Compiling tract-linalg v0.21.6
+   Compiling tract-data v0.21.6
+   Compiling miniz_oxide v0.8.9
+   Compiling xattr v1.6.1
+   Compiling ark-serialize v0.4.2
+   Compiling derivative v2.2.0
+   Compiling ark-ff-asm v0.4.2
+   Compiling filetime v0.2.26
+   Compiling itertools v0.10.5
+   Compiling hex v0.4.3
+   Compiling uint v0.9.5
+   Compiling tar v0.4.44
+   Compiling flate2 v1.1.5
+   Compiling ark-ff v0.4.2
+   Compiling fixed-hash v0.7.0
+   Compiling num-rational v0.4.2
+   Compiling hashbrown v0.13.2
+   Compiling num-iter v0.1.45
+   Compiling zmij v1.0.12
+   Compiling prost-derive v0.11.9
+   Compiling num v0.4.3
+   Compiling primitive-types v0.10.1
+   Compiling rand_distr v0.4.3
+   Compiling unroll v0.1.5
+   Compiling cpufeatures v0.2.17
+   Compiling itertools v0.11.0
+   Compiling equivalent v1.0.2
+   Compiling plonky2_util v0.2.0
+   Compiling hashbrown v0.16.1
+   Compiling bytes v1.11.0
+   Compiling serde_json v1.0.149
+   Compiling prost v0.11.9
+   Compiling indexmap v2.13.0
+   Compiling plonky2_field v0.2.2
+   Compiling keccak-hash v0.8.0
+   Compiling keccak v0.1.5
+   Compiling plonky2_maybe_rayon v0.2.0
+   Compiling memmap2 v0.9.9
+   Compiling is-terminal v0.4.17
+   Compiling termcolor v1.4.1
+   Compiling unsafe-libyaml v0.2.11
+   Compiling humantime v2.3.0
+   Compiling ryu v1.0.22
+   Compiling web-time v1.1.0
+   Compiling serde_yaml v0.9.34+deprecated
+   Compiling env_logger v0.10.2
+   Compiling plonky2 v0.2.2
+   Compiling sha3 v0.10.8
+   Compiling bincode v1.3.3
+   Compiling itertools v0.13.0
+   Compiling downcast-rs v2.0.2
+   Compiling tract-core v0.21.6
+   Compiling ark-poly v0.4.2
+   Compiling ark-ec v0.4.2
+   Compiling ark-bn254 v0.4.0
+   Compiling tract-nnef v0.21.6
+   Compiling tract-hir v0.21.6
+   Compiling tract-onnx-opl v0.21.6
+   Compiling tract-onnx v0.21.6
+   Compiling zk_torch v0.1.0 (/Users/ojas/zk-torch)
+warning: unnecessary parentheses around closure body
+  --> src/layer/conv.rs:22:21
+   |
+22 | ...)| (strides[i] * (*x - 1) + ch_dims[i] - (ch_dims[i] - 1 - padding[i][0]) - (ch_dims[i] - 1 - padding[i][1])))
+   |       ^                                                                                                        ^
+   |
+   = note: `#[warn(unused_parens)]` (part of `#[warn(unused)]`) on by default
+help: remove these parentheses
+   |
+22 -       .map(|(i, x)| (strides[i] * (*x - 1) + ch_dims[i] - (ch_dims[i] - 1 - padding[i][0]) - (ch_dims[i] - 1 - padding[i][1])))
+22 +       .map(|(i, x)| strides[i] * (*x - 1) + ch_dims[i] - (ch_dims[i] - 1 - padding[i][0]) - (ch_dims[i] - 1 - padding[i][1]) )
+   |
+
+warning: unnecessary parentheses around closure body
+   --> src/util/prover.rs:293:38
+    |
+293 |         util::vec_iter(&x.2).map(|y| (y.clone())).collect(),
+    |                                      ^         ^
+    |
+help: remove these parentheses
+    |
+293 -         util::vec_iter(&x.2).map(|y| (y.clone())).collect(),
+293 +         util::vec_iter(&x.2).map(|y| y.clone()).collect(),
+    |
+
+warning: unused variable: `iter`
+   --> src/util/fold.rs:301:13
+    |
+301 |         let mut iter = vec.iter();
+    |             ^^^^^^^^
+    |
+   ::: src/basic_block/mul.rs:16:1
+    |
+ 16 | define_acc_terms!(MulConstG2Terms, [], []);
+    | ------------------------------------------ in this macro invocation
+    |
+help: `iter` is captured in macro and introduced a unused variable
+   --> src/util/fold.rs:301:13
+    |
+301 |         let mut iter = vec.iter();
+    |             ^^^^^^^^
+    |
+   ::: src/basic_block/mul.rs:16:1
+    |
+ 16 | define_acc_terms!(MulConstG2Terms, [], []);
+    | ------------------------------------------ in this macro invocation
+    = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+    = note: this warning originates in the macro `define_acc_terms` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: unused variable: `iter`
+   --> src/util/fold.rs:301:13
+    |
+301 |         let mut iter = vec.iter();
+    |             ^^^^^^^^
+    |
+   ::: src/basic_block/mul.rs:17:1
+    |
+ 17 | define_acc_terms!(MulConstFrTerms, [], []);
+    | ------------------------------------------ in this macro invocation
+    |
+help: `iter` is captured in macro and introduced a unused variable
+   --> src/util/fold.rs:301:13
+    |
+301 |         let mut iter = vec.iter();
+    |             ^^^^^^^^
+    |
+   ::: src/basic_block/mul.rs:17:1
+    |
+ 17 | define_acc_terms!(MulConstFrTerms, [], []);
+    | ------------------------------------------ in this macro invocation
+    = note: this warning originates in the macro `define_acc_terms` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: unused variable: `iter`
+   --> src/util/fold.rs:301:13
+    |
+301 |         let mut iter = vec.iter();
+    |             ^^^^^^^^
+    |
+   ::: src/basic_block/permute.rs:40:1
+    |
+ 40 | define_acc_terms!(PermuteFrTerms, [], []);
+    | ----------------------------------------- in this macro invocation
+    |
+help: `iter` is captured in macro and introduced a unused variable
+   --> src/util/fold.rs:301:13
+    |
+301 |         let mut iter = vec.iter();
+    |             ^^^^^^^^
+    |
+   ::: src/basic_block/permute.rs:40:1
+    |
+ 40 | define_acc_terms!(PermuteFrTerms, [], []);
+    | ----------------------------------------- in this macro invocation
+    = note: this warning originates in the macro `define_acc_terms` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: unused variable: `iter`
+   --> src/util/fold.rs:301:13
+    |
+301 |         let mut iter = vec.iter();
+    |             ^^^^^^^^
+    |
+   ::: src/basic_block/sum.rs:18:1
+    |
+ 18 | define_acc_terms!(SumG2Terms, [], []);
+    | ------------------------------------- in this macro invocation
+    |
+help: `iter` is captured in macro and introduced a unused variable
+   --> src/util/fold.rs:301:13
+    |
+301 |         let mut iter = vec.iter();
+    |             ^^^^^^^^
+    |
+   ::: src/basic_block/sum.rs:18:1
+    |
+ 18 | define_acc_terms!(SumG2Terms, [], []);
+    | ------------------------------------- in this macro invocation
+    = note: this warning originates in the macro `define_acc_terms` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: unused variable: `iter`
+   --> src/util/fold.rs:301:13
+    |
+301 |         let mut iter = vec.iter();
+    |             ^^^^^^^^
+    |
+   ::: src/basic_block/sum.rs:19:1
+    |
+ 19 | define_acc_terms!(SumFrTerms, [], []);
+    | ------------------------------------- in this macro invocation
+    |
+help: `iter` is captured in macro and introduced a unused variable
+   --> src/util/fold.rs:301:13
+    |
+301 |         let mut iter = vec.iter();
+    |             ^^^^^^^^
+    |
+   ::: src/basic_block/sum.rs:19:1
+    |
+ 19 | define_acc_terms!(SumFrTerms, [], []);
+    | ------------------------------------- in this macro invocation
+    = note: this warning originates in the macro `define_acc_terms` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: unused variable: `iter`
+   --> src/util/fold.rs:301:13
+    |
+301 |         let mut iter = vec.iter();
+    |             ^^^^^^^^
+    |
+   ::: src/basic_block.rs:295:1
+    |
+295 | define_acc_terms!(TestG1Terms, [], []);
+    | -------------------------------------- in this macro invocation
+    |
+help: `iter` is captured in macro and introduced a unused variable
+   --> src/util/fold.rs:301:13
+    |
+301 |         let mut iter = vec.iter();
+    |             ^^^^^^^^
+    |
+   ::: src/basic_block.rs:295:1
+    |
+295 | define_acc_terms!(TestG1Terms, [], []);
+    | -------------------------------------- in this macro invocation
+    = note: this warning originates in the macro `define_acc_terms` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: unused variable: `iter`
+   --> src/util/fold.rs:301:13
+    |
+301 |         let mut iter = vec.iter();
+    |             ^^^^^^^^
+    |
+   ::: src/basic_block.rs:296:1
+    |
+296 | define_acc_terms!(TestG2Terms, [], []);
+    | -------------------------------------- in this macro invocation
+    |
+help: `iter` is captured in macro and introduced a unused variable
+   --> src/util/fold.rs:301:13
+    |
+301 |         let mut iter = vec.iter();
+    |             ^^^^^^^^
+    |
+   ::: src/basic_block.rs:296:1
+    |
+296 | define_acc_terms!(TestG2Terms, [], []);
+    | -------------------------------------- in this macro invocation
+    = note: this warning originates in the macro `define_acc_terms` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: unused variable: `iter`
+   --> src/util/fold.rs:301:13
+    |
+301 |         let mut iter = vec.iter();
+    |             ^^^^^^^^
+    |
+   ::: src/basic_block.rs:297:1
+    |
+297 | define_acc_terms!(TestFrTerms, [], []);
+    | -------------------------------------- in this macro invocation
+    |
+help: `iter` is captured in macro and introduced a unused variable
+   --> src/util/fold.rs:301:13
+    |
+301 |         let mut iter = vec.iter();
+    |             ^^^^^^^^
+    |
+   ::: src/basic_block.rs:297:1
+    |
+297 | define_acc_terms!(TestFrTerms, [], []);
+    | -------------------------------------- in this macro invocation
+    = note: this warning originates in the macro `define_acc_terms` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: value assigned to `epsilon` is never read
+  --> src/layer/norm.rs:55:7
+   |
+55 |       x.f as f32
+   |       ^^^
+   |
+   = help: maybe it is overwritten before being read?
+   = note: `#[warn(unused_assignments)]` (part of `#[warn(unused)]`) on by default
+
+warning: value assigned to `epsilon` is never read
+  --> src/layer/norm.rs:58:7
+   |
+58 |       1e-5
+   |       ^^^^
+   |
+   = help: maybe it is overwritten before being read?
+
+warning: unused variable: `attributes`
+   --> src/layer/norm.rs:647:5
+    |
+647 |     attributes: &Vec<&AttributeProto>,
+    |     ^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_attributes`
+
+warning: unused variable: `gamma`
+  --> src/util/verifier.rs:37:7
+   |
+37 |   let gamma = Fr::rand(&mut rng);
+   |       ^^^^^ help: if this is intentional, prefix it with an underscore: `_gamma`
+
+warning: `zk_torch` (lib) generated 14 warnings (run `cargo fix --lib -p zk_torch` to apply 4 suggestions)
+    Finished `release` profile [optimized] target(s) in 1m 21s
+     Running `target/release/zk_torch config.yaml`
+Compiling ONNX node: /lin1/MatMul
+Compiling ONNX node: /lin1/Add
+Compiling ONNX node: /relu/Relu
+Compiling ONNX node: /lin2/MatMul
+Compiling ONNX node: /lin2/Add
+Compiling ONNX node: /relu_1/Relu
+Determining skip-able nodes when encoding the circuit...
+  Iteration: 0
+  Iteration: 1
+Const lin1.bias | running 0 ConstBasicBlock
+Const lin2.bias | running 1 ConstBasicBlock
+Const onnx::MatMul_13 | running 2 ConstBasicBlock
+Const onnx::MatMul_14 | running 3 ConstBasicBlock
+Op /lin1/MatMul | running 4 CQLinBasicBlock { setup: [[BigInt([0, 0, 0, 0]), BigInt([0, 0, 0, 0]), BigInt([4, 0, 0, 0]), BigInt([4891460686036598783, 2896914383306846353, 13281191951274694749, 3486998266802970665])],
+ [BigInt([2, 0, 0, 0]), BigInt([1, 0, 0, 0]), BigInt([2, 0, 0, 0]), BigInt([4891460686036598781, 2896914383306846353, 13281191951274694749, 3486998266802970665])],
+ [BigInt([4, 0, 0, 0]), BigInt([4891460686036598784, 2896914383306846353, 13281191951274694749, 3486998266802970665]), BigInt([1, 0, 0, 0]), BigInt([1, 0, 0, 0])],
+ [BigInt([4, 0, 0, 0]), BigInt([4891460686036598782, 2896914383306846353, 13281191951274694749, 3486998266802970665]), BigInt([1, 0, 0, 0]), BigInt([2, 0, 0, 0])]], shape=[4, 4], strides=[4, 1], layout=Cc (0x5), dynamic ndim=2 }
+Op /lin1/MatMul | running 5 ChangeSFBasicBlock { input_SF: 6, output_SF: 3 }
+Op /lin1/MatMul | running 6 RepeaterBasicBlock { basic_block: CQ2BasicBlock { n: 4, setup: Some((ChangeSFBasicBlock { input_SF: 6, output_SF: 3 }, -32, 64)) }, N: 1 }
+Op /lin1/Add | running 7 RepeaterBasicBlock { basic_block: AddBasicBlock, N: 1 }
+Op /relu/Relu | running 8 ReLUBasicBlock { input_SF: 3, output_SF: 3 }
+Op /relu/Relu | running 9 RepeaterBasicBlock { basic_block: CQ2BasicBlock { n: 4, setup: Some((ReLUBasicBlock { input_SF: 3, output_SF: 3 }, -32, 64)) }, N: 1 }
+Op /lin2/MatMul | running 10 CQLinBasicBlock { setup: [[BigInt([4891460686036598782, 2896914383306846353, 13281191951274694749, 3486998266802970665]), BigInt([4891460686036598782, 2896914383306846353, 13281191951274694749, 3486998266802970665]), BigInt([4891460686036598783, 2896914383306846353, 13281191951274694749, 3486998266802970665]), BigInt([4891460686036598783, 2896914383306846353, 13281191951274694749, 3486998266802970665])],
+ [BigInt([3, 0, 0, 0]), BigInt([4891460686036598782, 2896914383306846353, 13281191951274694749, 3486998266802970665]), BigInt([0, 0, 0, 0]), BigInt([0, 0, 0, 0])],
+ [BigInt([4, 0, 0, 0]), BigInt([1, 0, 0, 0]), BigInt([1, 0, 0, 0]), BigInt([4891460686036598782, 2896914383306846353, 13281191951274694749, 3486998266802970665])],
+ [BigInt([1, 0, 0, 0]), BigInt([4891460686036598782, 2896914383306846353, 13281191951274694749, 3486998266802970665]), BigInt([4891460686036598782, 2896914383306846353, 13281191951274694749, 3486998266802970665]), BigInt([2, 0, 0, 0])]], shape=[4, 4], strides=[4, 1], layout=Cc (0x5), dynamic ndim=2 }
+Op /lin2/MatMul | running 11 ChangeSFBasicBlock { input_SF: 6, output_SF: 3 }
+Op /lin2/MatMul | running 12 RepeaterBasicBlock { basic_block: CQ2BasicBlock { n: 4, setup: Some((ChangeSFBasicBlock { input_SF: 6, output_SF: 3 }, -32, 64)) }, N: 1 }
+Op /lin2/Add | running 13 RepeaterBasicBlock { basic_block: AddBasicBlock, N: 1 }
+Op /relu_1/Relu | running 14 ReLUBasicBlock { input_SF: 3, output_SF: 3 }
+Op /relu_1/Relu | running 15 RepeaterBasicBlock { basic_block: CQ2BasicBlock { n: 4, setup: Some((ReLUBasicBlock { input_SF: 3, output_SF: 3 }, -32, 64)) }, N: 1 }
+setting up 0 ConstBasicBlock
+setting up 1 ConstBasicBlock
+setting up 2 ConstBasicBlock
+setting up 3 ConstBasicBlock
+setting up 4 ChangeSFBasicBlock { input_SF: 6, output_SF: 3 }
+setting up 5 RepeaterBasicBlock { basic_block: CQ2BasicBlock { n: 4, setup: Some((ChangeSFBasicBlock { input_SF: 6, output_SF: 3 }, -32, 64)) }, N: 1 }
+setting up 6 CQLinBasicBlock { setup: [[BigInt([0, 0, 0, 0]), BigInt([0, 0, 0, 0]), BigInt([4, 0, 0, 0]), BigInt([4891460686036598783, 2896914383306846353, 13281191951274694749, 3486998266802970665])],
+ [BigInt([2, 0, 0, 0]), BigInt([1, 0, 0, 0]), BigInt([2, 0, 0, 0]), BigInt([4891460686036598781, 2896914383306846353, 13281191951274694749, 3486998266802970665])],
+ [BigInt([4, 0, 0, 0]), BigInt([4891460686036598784, 2896914383306846353, 13281191951274694749, 3486998266802970665]), BigInt([1, 0, 0, 0]), BigInt([1, 0, 0, 0])],
+ [BigInt([4, 0, 0, 0]), BigInt([4891460686036598782, 2896914383306846353, 13281191951274694749, 3486998266802970665]), BigInt([1, 0, 0, 0]), BigInt([2, 0, 0, 0])]], shape=[4, 4], strides=[4, 1], layout=Cc (0x5), dynamic ndim=2 }
+setting up 7 RepeaterBasicBlock { basic_block: AddBasicBlock, N: 1 }
+setting up 8 ReLUBasicBlock { input_SF: 3, output_SF: 3 }
+setting up 9 RepeaterBasicBlock { basic_block: CQ2BasicBlock { n: 4, setup: Some((ReLUBasicBlock { input_SF: 3, output_SF: 3 }, -32, 64)) }, N: 1 }
+setting up 10 CQLinBasicBlock { setup: [[BigInt([4891460686036598782, 2896914383306846353, 13281191951274694749, 3486998266802970665]), BigInt([4891460686036598782, 2896914383306846353, 13281191951274694749, 3486998266802970665]), BigInt([4891460686036598783, 2896914383306846353, 13281191951274694749, 3486998266802970665]), BigInt([4891460686036598783, 2896914383306846353, 13281191951274694749, 3486998266802970665])],
+ [BigInt([3, 0, 0, 0]), BigInt([4891460686036598782, 2896914383306846353, 13281191951274694749, 3486998266802970665]), BigInt([0, 0, 0, 0]), BigInt([0, 0, 0, 0])],
+ [BigInt([4, 0, 0, 0]), BigInt([1, 0, 0, 0]), BigInt([1, 0, 0, 0]), BigInt([4891460686036598782, 2896914383306846353, 13281191951274694749, 3486998266802970665])],
+ [BigInt([1, 0, 0, 0]), BigInt([4891460686036598782, 2896914383306846353, 13281191951274694749, 3486998266802970665]), BigInt([4891460686036598782, 2896914383306846353, 13281191951274694749, 3486998266802970665]), BigInt([2, 0, 0, 0])]], shape=[4, 4], strides=[4, 1], layout=Cc (0x5), dynamic ndim=2 }
+Const lin1.bias | encoding node 0 ConstBasicBlock
+Const lin2.bias | encoding node 1 ConstBasicBlock
+Const onnx::MatMul_13 | skipping encodingOutputs for 2 ConstBasicBlock because the output is precomputable and will not be used as input in any layer that needs proving and verifying
+Const onnx::MatMul_14 | skipping encodingOutputs for 3 ConstBasicBlock because the output is precomputable and will not be used as input in any layer that needs proving and verifying
+Op /lin1/MatMul | encoding node 4 CQLinBasicBlock { setup: [[BigInt([0, 0, 0, 0]), BigInt([0, 0, 0, 0]), BigInt([4, 0, 0, 0]), BigInt([4891460686036598783, 2896914383306846353, 13281191951274694749, 3486998266802970665])],
+ [BigInt([2, 0, 0, 0]), BigInt([1, 0, 0, 0]), BigInt([2, 0, 0, 0]), BigInt([4891460686036598781, 2896914383306846353, 13281191951274694749, 3486998266802970665])],
+ [BigInt([4, 0, 0, 0]), BigInt([4891460686036598784, 2896914383306846353, 13281191951274694749, 3486998266802970665]), BigInt([1, 0, 0, 0]), BigInt([1, 0, 0, 0])],
+ [BigInt([4, 0, 0, 0]), BigInt([4891460686036598782, 2896914383306846353, 13281191951274694749, 3486998266802970665]), BigInt([1, 0, 0, 0]), BigInt([2, 0, 0, 0])]], shape=[4, 4], strides=[4, 1], layout=Cc (0x5), dynamic ndim=2 }
+Op /lin1/MatMul | encoding node 5 ChangeSFBasicBlock { input_SF: 6, output_SF: 3 }
+Op /lin1/MatMul | encoding node 6 RepeaterBasicBlock { basic_block: CQ2BasicBlock { n: 4, setup: Some((ChangeSFBasicBlock { input_SF: 6, output_SF: 3 }, -32, 64)) }, N: 1 }
+Op /lin1/Add | encoding node 7 RepeaterBasicBlock { basic_block: AddBasicBlock, N: 1 }
+Op /relu/Relu | encoding node 8 ReLUBasicBlock { input_SF: 3, output_SF: 3 }
+Op /relu/Relu | encoding node 9 RepeaterBasicBlock { basic_block: CQ2BasicBlock { n: 4, setup: Some((ReLUBasicBlock { input_SF: 3, output_SF: 3 }, -32, 64)) }, N: 1 }
+Op /lin2/MatMul | encoding node 10 CQLinBasicBlock { setup: [[BigInt([4891460686036598782, 2896914383306846353, 13281191951274694749, 3486998266802970665]), BigInt([4891460686036598782, 2896914383306846353, 13281191951274694749, 3486998266802970665]), BigInt([4891460686036598783, 2896914383306846353, 13281191951274694749, 3486998266802970665]), BigInt([4891460686036598783, 2896914383306846353, 13281191951274694749, 3486998266802970665])],
+ [BigInt([3, 0, 0, 0]), BigInt([4891460686036598782, 2896914383306846353, 13281191951274694749, 3486998266802970665]), BigInt([0, 0, 0, 0]), BigInt([0, 0, 0, 0])],
+ [BigInt([4, 0, 0, 0]), BigInt([1, 0, 0, 0]), BigInt([1, 0, 0, 0]), BigInt([4891460686036598782, 2896914383306846353, 13281191951274694749, 3486998266802970665])],
+ [BigInt([1, 0, 0, 0]), BigInt([4891460686036598782, 2896914383306846353, 13281191951274694749, 3486998266802970665]), BigInt([4891460686036598782, 2896914383306846353, 13281191951274694749, 3486998266802970665]), BigInt([2, 0, 0, 0])]], shape=[4, 4], strides=[4, 1], layout=Cc (0x5), dynamic ndim=2 }
+Op /lin2/MatMul | encoding node 11 ChangeSFBasicBlock { input_SF: 6, output_SF: 3 }
+Op /lin2/MatMul | encoding node 12 RepeaterBasicBlock { basic_block: CQ2BasicBlock { n: 4, setup: Some((ChangeSFBasicBlock { input_SF: 6, output_SF: 3 }, -32, 64)) }, N: 1 }
+Op /lin2/Add | encoding node 13 RepeaterBasicBlock { basic_block: AddBasicBlock, N: 1 }
+Op /relu_1/Relu | encoding node 14 ReLUBasicBlock { input_SF: 3, output_SF: 3 }
+Op /relu_1/Relu | encoding node 15 RepeaterBasicBlock { basic_block: CQ2BasicBlock { n: 4, setup: Some((ReLUBasicBlock { input_SF: 3, output_SF: 3 }, -32, 64)) }, N: 1 }
+Const lin1.bias | skipping proving for 0 ConstBasicBlock because this layer is precomputable given the constant inputs
+Const lin2.bias | skipping proving for 1 ConstBasicBlock because this layer is precomputable given the constant inputs
+Const onnx::MatMul_13 | skipping proving for 2 ConstBasicBlock because this layer is precomputable given the constant inputs
+Const onnx::MatMul_14 | skipping proving for 3 ConstBasicBlock because this layer is precomputable given the constant inputs
+Op /lin1/MatMul | proving 4 CQLinBasicBlock { setup: [[BigInt([0, 0, 0, 0]), BigInt([0, 0, 0, 0]), BigInt([4, 0, 0, 0]), BigInt([4891460686036598783, 2896914383306846353, 13281191951274694749, 3486998266802970665])],
+ [BigInt([2, 0, 0, 0]), BigInt([1, 0, 0, 0]), BigInt([2, 0, 0, 0]), BigInt([4891460686036598781, 2896914383306846353, 13281191951274694749, 3486998266802970665])],
+ [BigInt([4, 0, 0, 0]), BigInt([4891460686036598784, 2896914383306846353, 13281191951274694749, 3486998266802970665]), BigInt([1, 0, 0, 0]), BigInt([1, 0, 0, 0])],
+ [BigInt([4, 0, 0, 0]), BigInt([4891460686036598782, 2896914383306846353, 13281191951274694749, 3486998266802970665]), BigInt([1, 0, 0, 0]), BigInt([2, 0, 0, 0])]], shape=[4, 4], strides=[4, 1], layout=Cc (0x5), dynamic ndim=2 }
+Op /lin1/MatMul | proving 5 ChangeSFBasicBlock { input_SF: 6, output_SF: 3 }
+Op /lin1/MatMul | proving 6 RepeaterBasicBlock { basic_block: CQ2BasicBlock { n: 4, setup: Some((ChangeSFBasicBlock { input_SF: 6, output_SF: 3 }, -32, 64)) }, N: 1 }
+Op /lin1/Add | proving 7 RepeaterBasicBlock { basic_block: AddBasicBlock, N: 1 }
+Op /relu/Relu | proving 8 ReLUBasicBlock { input_SF: 3, output_SF: 3 }
+Op /relu/Relu | proving 9 RepeaterBasicBlock { basic_block: CQ2BasicBlock { n: 4, setup: Some((ReLUBasicBlock { input_SF: 3, output_SF: 3 }, -32, 64)) }, N: 1 }
+Op /lin2/MatMul | proving 10 CQLinBasicBlock { setup: [[BigInt([4891460686036598782, 2896914383306846353, 13281191951274694749, 3486998266802970665]), BigInt([4891460686036598782, 2896914383306846353, 13281191951274694749, 3486998266802970665]), BigInt([4891460686036598783, 2896914383306846353, 13281191951274694749, 3486998266802970665]), BigInt([4891460686036598783, 2896914383306846353, 13281191951274694749, 3486998266802970665])],
+ [BigInt([3, 0, 0, 0]), BigInt([4891460686036598782, 2896914383306846353, 13281191951274694749, 3486998266802970665]), BigInt([0, 0, 0, 0]), BigInt([0, 0, 0, 0])],
+ [BigInt([4, 0, 0, 0]), BigInt([1, 0, 0, 0]), BigInt([1, 0, 0, 0]), BigInt([4891460686036598782, 2896914383306846353, 13281191951274694749, 3486998266802970665])],
+ [BigInt([1, 0, 0, 0]), BigInt([4891460686036598782, 2896914383306846353, 13281191951274694749, 3486998266802970665]), BigInt([4891460686036598782, 2896914383306846353, 13281191951274694749, 3486998266802970665]), BigInt([2, 0, 0, 0])]], shape=[4, 4], strides=[4, 1], layout=Cc (0x5), dynamic ndim=2 }
+Op /lin2/MatMul | proving 11 ChangeSFBasicBlock { input_SF: 6, output_SF: 3 }
+Op /lin2/MatMul | proving 12 RepeaterBasicBlock { basic_block: CQ2BasicBlock { n: 4, setup: Some((ChangeSFBasicBlock { input_SF: 6, output_SF: 3 }, -32, 64)) }, N: 1 }
+Op /lin2/Add | proving 13 RepeaterBasicBlock { basic_block: AddBasicBlock, N: 1 }
+Op /relu_1/Relu | proving 14 ReLUBasicBlock { input_SF: 3, output_SF: 3 }
+Op /relu_1/Relu | proving 15 RepeaterBasicBlock { basic_block: CQ2BasicBlock { n: 4, setup: Some((ReLUBasicBlock { input_SF: 3, output_SF: 3 }, -32, 64)) }, N: 1 }
+Const lin1.bias | skipping verifying for 0 ConstBasicBlock because this layer is precomputable given the constant inputs
+Const lin2.bias | skipping verifying for 1 ConstBasicBlock because this layer is precomputable given the constant inputs
+Const onnx::MatMul_13 | skipping verifying for 2 ConstBasicBlock because this layer is precomputable given the constant inputs
+Const onnx::MatMul_14 | skipping verifying for 3 ConstBasicBlock because this layer is precomputable given the constant inputs
+Op /lin1/MatMul | verifying 4 CQLinBasicBlock { setup: [[BigInt([0, 0, 0, 0]), BigInt([0, 0, 0, 0]), BigInt([4, 0, 0, 0]), BigInt([4891460686036598783, 2896914383306846353, 13281191951274694749, 3486998266802970665])],
+ [BigInt([2, 0, 0, 0]), BigInt([1, 0, 0, 0]), BigInt([2, 0, 0, 0]), BigInt([4891460686036598781, 2896914383306846353, 13281191951274694749, 3486998266802970665])],
+ [BigInt([4, 0, 0, 0]), BigInt([4891460686036598784, 2896914383306846353, 13281191951274694749, 3486998266802970665]), BigInt([1, 0, 0, 0]), BigInt([1, 0, 0, 0])],
+ [BigInt([4, 0, 0, 0]), BigInt([4891460686036598782, 2896914383306846353, 13281191951274694749, 3486998266802970665]), BigInt([1, 0, 0, 0]), BigInt([2, 0, 0, 0])]], shape=[4, 4], strides=[4, 1], layout=Cc (0x5), dynamic ndim=2 }
+Op /lin1/MatMul | verifying 5 ChangeSFBasicBlock { input_SF: 6, output_SF: 3 }
+Op /lin1/MatMul | verifying 6 RepeaterBasicBlock { basic_block: CQ2BasicBlock { n: 4, setup: Some((ChangeSFBasicBlock { input_SF: 6, output_SF: 3 }, -32, 64)) }, N: 1 }
+Op /lin1/Add | verifying 7 RepeaterBasicBlock { basic_block: AddBasicBlock, N: 1 }
+Op /relu/Relu | verifying 8 ReLUBasicBlock { input_SF: 3, output_SF: 3 }
+Op /relu/Relu | verifying 9 RepeaterBasicBlock { basic_block: CQ2BasicBlock { n: 4, setup: Some((ReLUBasicBlock { input_SF: 3, output_SF: 3 }, -32, 64)) }, N: 1 }
+Op /lin2/MatMul | verifying 10 CQLinBasicBlock { setup: [[BigInt([4891460686036598782, 2896914383306846353, 13281191951274694749, 3486998266802970665]), BigInt([4891460686036598782, 2896914383306846353, 13281191951274694749, 3486998266802970665]), BigInt([4891460686036598783, 2896914383306846353, 13281191951274694749, 3486998266802970665]), BigInt([4891460686036598783, 2896914383306846353, 13281191951274694749, 3486998266802970665])],
+ [BigInt([3, 0, 0, 0]), BigInt([4891460686036598782, 2896914383306846353, 13281191951274694749, 3486998266802970665]), BigInt([0, 0, 0, 0]), BigInt([0, 0, 0, 0])],
+ [BigInt([4, 0, 0, 0]), BigInt([1, 0, 0, 0]), BigInt([1, 0, 0, 0]), BigInt([4891460686036598782, 2896914383306846353, 13281191951274694749, 3486998266802970665])],
+ [BigInt([1, 0, 0, 0]), BigInt([4891460686036598782, 2896914383306846353, 13281191951274694749, 3486998266802970665]), BigInt([4891460686036598782, 2896914383306846353, 13281191951274694749, 3486998266802970665]), BigInt([2, 0, 0, 0])]], shape=[4, 4], strides=[4, 1], layout=Cc (0x5), dynamic ndim=2 }
+Op /lin2/MatMul | verifying 11 ChangeSFBasicBlock { input_SF: 6, output_SF: 3 }
+Op /lin2/MatMul | verifying 12 RepeaterBasicBlock { basic_block: CQ2BasicBlock { n: 4, setup: Some((ChangeSFBasicBlock { input_SF: 6, output_SF: 3 }, -32, 64)) }, N: 1 }
+Op /lin2/Add | verifying 13 RepeaterBasicBlock { basic_block: AddBasicBlock, N: 1 }
+Op /relu_1/Relu | verifying 14 ReLUBasicBlock { input_SF: 3, output_SF: 3 }
+Op /relu_1/Relu | verifying 15 RepeaterBasicBlock { basic_block: CQ2BasicBlock { n: 4, setup: Some((ReLUBasicBlock { input_SF: 3, output_SF: 3 }, -32, 64)) }, N: 1 }
+55
+13
+Is verification successful? true
+modelsEnc size: 1.41 KB
+inputsEnc size: 73 bytes
+outputsEnc size: 786 bytes
+proofs size: 8.07 KB
+final_proofs size: 4.82 KB
+Cargo run was successful.
